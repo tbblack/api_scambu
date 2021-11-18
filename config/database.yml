@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: api_scambu_development
+
+test:
+  <<: *default
+  database: api_scambu_test
+
+production:
+  <<: *default
+  database: api_scambu_production
+  username: api_scambu
+  password: <%= ENV['API_SCAMBU_DATABASE_PASSWORD'] %>
