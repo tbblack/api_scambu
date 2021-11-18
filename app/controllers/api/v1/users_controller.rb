@@ -2,19 +2,19 @@
 module Api
 	module V1
 		class UsersController < ApplicationController   
-			# Listar todos os artigos
+			# Listar todos os usuarios
             def index
 				users = User.order('created_at DESC');
 				render json: {status: 'SUCCESS', message:'Usuarios carregados', data:users},status: :ok
 			end
 
-			# Listar artigo passando ID
+			# Listar usuario passando ID
 			def show
 				user = User.find(params[:id])
 				render json: {status: 'SUCCESS', message:'usuario carregado', data:user},status: :ok
 			end
 
-			# Criar um novo artigo
+			# Criar um novo usuario
 			def create
 				user = User.new(user_params)
 				if user.save
@@ -40,6 +40,7 @@ module Api
 					render json: {status: 'ERROR', message:'usuario não atualizado', data:user.erros},status: :unprocessable_entity
 				end
 			end
+
 
 			# Parametros aceitos
 			private
