@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_18_212723) do
+ActiveRecord::Schema.define(version: 2021_11_17_190718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(version: 2021_11_18_212723) do
   create_table "trocas", force: :cascade do |t|
     t.integer "solicitante_id"
     t.integer "solicitado_id"
-    t.integer "produto_id"
+    t.bigint "produto_id"
     t.boolean "aceite_solicitante"
     t.boolean "aceite_solicitado"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["produto_id"], name: "index_trocas_on_produto_id"
   end
 
   create_table "users", force: :cascade do |t|

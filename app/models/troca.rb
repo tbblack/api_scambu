@@ -5,4 +5,5 @@ class Troca < ApplicationRecord
     
     belongs_to :solicitado, class_name: "User"
     belongs_to :solicitante, class_name: "User"
+    belongs_to :produto
 end
