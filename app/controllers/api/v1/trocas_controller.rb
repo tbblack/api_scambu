@@ -44,8 +44,7 @@ module Api
             # busca os usuarios da troca
             def busca_usuarios_troca
                 troca = Troca.find(params[:id])
-                ids_usuarios = [troca.solicitante_id, troca.solicitado_id]
-                usuarios = User.where(id: ids_usuarios)
+                usuarios = [troca.solicitante, troca.solicitado]
                 render json: {status: 'SUCCESS', message:'usuarios da troca carregados', data:usuarios},status: :ok
             end
 
