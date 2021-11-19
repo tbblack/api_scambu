@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2021_11_18_212723) do
   end
 
   create_table "trocas", force: :cascade do |t|
-    t.integer "id_solicitante"
-    t.integer "id_solicitado"
-    t.integer "id_produto"
+    t.integer "solicitante_id"
+    t.integer "solicitado_id"
+    t.integer "produto_id"
     t.boolean "aceite_solicitante"
     t.boolean "aceite_solicitado"
     t.datetime "created_at", precision: 6, null: false

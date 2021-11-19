@@ -21,7 +21,18 @@ Rails.application.routes.draw do
 		patch '/produtos/update/:id', to: 'produtos#update'
 		put '/produtos/update/:id', to: 'produtos#update'
 		delete '/produtos/delete/:id', to: 'produtos#destroy'
-		
+
+		#CRUD base Trocas
+		get '/trocas/index', to: 'trocas#index'
+		post '/trocas/create', to: 'trocas#create'
+		get '/trocas/show/:id', to: 'trocas#show'
+		patch '/trocas/update/:id', to: 'trocas#update'
+		put '/trocas/update/:id', to: 'trocas#update'
+		delete '/trocas/delete/:id', to: 'trocas#destroy'
+
+		#Metodos fora do CRUD trocas
+		get '/trocas/busca_usuarios_troca/:id', to: 'trocas#busca_usuarios_troca'
+
   	end
   end
 end
