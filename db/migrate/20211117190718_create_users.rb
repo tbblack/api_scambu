@@ -6,5 +6,14 @@ class CreateUsers < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+
+    create_table :produtos do |t|
+      t.string :name
+      t.string :descricao
+      t.integer :quantidade
+      t.belongs_to :user
+
+      t.timestamps
+    end
   end
 end
