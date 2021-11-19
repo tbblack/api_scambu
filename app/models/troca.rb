@@ -1,0 +1,2 @@
+class Troca < ApplicationRecord
+end

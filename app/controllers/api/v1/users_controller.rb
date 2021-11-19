@@ -41,6 +41,13 @@ module Api
 				end
 			end
 
+			# Listar produtos do usuario passando ID
+			def show_produtos
+				user = User.find(params[:id])
+				produtos = user.produto
+				render json: {status: 'SUCCESS', message:'produtos do usuario carregado', data:produtos},status: :ok
+			end
+
 
 			# Parametros aceitos
 			private
