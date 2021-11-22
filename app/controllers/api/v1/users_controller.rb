@@ -3,18 +3,21 @@ module Api
 	module V1
 		class UsersController < ApplicationController   
 			# Listar todos os usuarios
+			# get '/users/index', to: 'users#index'
             def index
 				users = User.order('created_at DESC');
 				render json: {status: 'SUCCESS', message:'Usuarios carregados', data:users},status: :ok
 			end
 
 			# Listar usuario passando ID
+			# get '/users/show/:id', to: 'users#show'
 			def show
 				user = User.find(params[:id])
 				render json: {status: 'SUCCESS', message:'usuario carregado', data:user},status: :ok
 			end
 
 			# Criar um novo usuario
+			# post '/users/create', to: 'users#create'
 			def create
 				user = User.new(user_params)
 				if user.save
@@ -25,6 +28,7 @@ module Api
 			end
 
 			# Excluir usuario
+			# delete '/users/delete/:id', to: 'users#destroy'
 			def destroy
 				user = User.find(params[:id])
 				user.destroy
@@ -32,6 +36,8 @@ module Api
 			end
 
 			# Atualizar um usuario
+			# patch '/users/update/:id', to: 'users#update'
+			# put '/users/update/:id', to: 'users#update'
 			def update
 				user = User.find(params[:id])
 				if user.update(user_params)
@@ -42,6 +48,7 @@ module Api
 			end
 
 			# Listar produtos do usuario passando ID
+			# get '/users/show_produtos/:id', to: 'users#show_produtos'
 			def show_produtos
 				user = User.find(params[:id])
 				produtos = user.produto
