@@ -19,7 +19,9 @@ module Api
 			# Criar um novo troca
             # post '/trocas/create', to: 'trocas#create'
 			def create
-				troca = Troca.new(troca_params)
+                #binding.pry
+                produto = Produto.find_by(id: params["produto_id"])
+				troca = Troca.new(solicitante_id: params["solicitante_id"], solicitado_id: produto.user.id, produto_id: params["produto_id"])
 				if troca.save
 					render json: {status: 'SUCCESS', message:'troca salvo', data:troca},status: :ok
 				else
@@ -59,7 +61,7 @@ module Api
 			private
 
 			def troca_params
-				params.permit(:solicitado_id, :produto_id)
+				params.permit(:solicitante_id, :produto_id)
 			end
 
 		end
