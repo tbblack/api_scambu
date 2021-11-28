@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
 		#Metodos fora do CRUD USUARIO
 		get '/users/show_produtos/:id', to: 'users#show_produtos'
-
+		post '/users/busca_pelo_nome', to: 'users#busca_pelo_nome'
+		post '/users/busca_pelo_cpf', to: 'users#busca_pelo_cpf'
+		
 		#CRUD base Produtos
 		get '/produtos/index', to: 'produtos#index'
 		get '/produtos/show/:id', to: 'produtos#show'
@@ -21,6 +23,10 @@ Rails.application.routes.draw do
 		delete '/produtos/delete/:id', to: 'produtos#destroy'
 		patch '/produtos/update/:id', to: 'produtos#update'
 		put '/produtos/update/:id', to: 'produtos#update'
+
+		#Metodos fora do CRUD PRODUTO
+		get '/produtos/show_usuario/:id', to: 'produtos#show_usuario'
+		post '/produtos/busca_pelo_nome', to: 'produtos#busca_pelo_nome'
 
 		#CRUD base Trocas
 		get '/trocas/index', to: 'trocas#index'

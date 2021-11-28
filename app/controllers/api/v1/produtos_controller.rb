@@ -47,6 +47,21 @@ module Api
 				end
 			end
 
+			# buscar usuario dono do produto
+			# get '/users/show_usuario/:id', to: 'users#show_usuario'
+			def show_usuario
+				produto = Produto.find(params[:id])
+				usuario = produto.user
+				render json: {status: 'SUCCESS', message:'usuario dono do produto carregado', data:usuario},status: :ok
+			end
+
+			# Buscar Usuario ou Usuarios com base no nome
+			# post '/produtos/busca_pelo_nome', to: 'produtos#busca_pelo_nome'
+			def busca_pelo_nome
+				produtos = Produto.where('name LIKE ?', "%#{produto_params[:name]}%")
+				render json: {status: 'SUCCESS', message:'Produtos carregados', data:produtos},status: :ok
+			end
+
 			# Parametros aceitos
 			private
 

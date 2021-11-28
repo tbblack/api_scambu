@@ -55,6 +55,19 @@ module Api
 				render json: {status: 'SUCCESS', message:'produtos do usuario carregado', data:produtos},status: :ok
 			end
 
+			# Buscar Usuario ou Usuarios com base no nome
+			# post '/users/busca_pelo_nome', to: 'users#busca_pelo_nome'
+			def busca_pelo_nome
+				usuarios = User.where('name LIKE ?', "%#{user_params[:name]}%")
+				render json: {status: 'SUCCESS', message:'Usuarios carregados', data:usuarios},status: :ok
+			end
+
+			# Buscar Usuario ou Usuarios com base no nome
+			# post '/users/busca_pelo_cpf', to: 'users#busca_pelo_nome'
+			def busca_pelo_cpf
+				usuarios = User.where('cpf LIKE ?', "%#{user_params[:cpf]}%")
+				render json: {status: 'SUCCESS', message:'Usuarios carregados', data:usuarios},status: :ok
+			end
 
 			# Parametros aceitos
 			private
