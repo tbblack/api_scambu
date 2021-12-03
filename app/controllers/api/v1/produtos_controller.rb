@@ -1,7 +1,8 @@
 
 module Api
 	module V1
-		class ProdutosController < ApplicationController   
+		class ProdutosController < ApplicationController  
+			before_action :authorized 
 			# Listar todos os Produtos
             # get '/produtos/index', to: 'produtos#index'
             def index

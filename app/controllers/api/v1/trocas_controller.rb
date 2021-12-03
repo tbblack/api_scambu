@@ -2,6 +2,7 @@
 module Api
 	module V1
 		class TrocasController < ApplicationController   
+			before_action :authorized
 			# Listar todos os Troca
             # get '/trocas/index', to: 'trocas#index'
             def index

@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_11_17_190718) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "cpf"
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

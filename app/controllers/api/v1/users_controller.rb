@@ -2,6 +2,7 @@
 module Api
 	module V1
 		class UsersController < ApplicationController   
+			before_action :authorized, except: [:auto_login, :login]
 			# Listar todos os usuarios
 			# get '/users/index', to: 'users#index'
             def index
@@ -77,13 +78,40 @@ module Api
 				render json: {status: 'SUCCESS', message:'trocas nao finalizadas', data:trocas},status: :ok
 			end
 
+			# REGISTER
+			def create
+				@user = User.create(user_params)
+				if @user.valid?
+				token = encode_token({user_id: @user.id})
+				render json: {user: @user, token: token}
+				else
+				render json: {error: "Invalid username or password"}
+				end
+			end
+
+			# LOGGING IN
+			def login
+				@user = User.find_by(username: params[:username])
+
+				if @user && @user.authenticate(params[:password])
+				token = encode_token({user_id: @user.id})
+				render json: {user: @user, token: token}
+				else
+				render json: {error: "Invalid username or password"}
+				end
+			end
+
+
+			def auto_login
+				render json: @user
+			end
 
 
 			# Parametros aceitos
 			private
 
 			def user_params
-				params.permit(:name, :cpf)
+				params.permit(:username, :password)
 			end
 
 		end
