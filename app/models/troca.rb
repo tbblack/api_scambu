@@ -6,8 +6,9 @@
 #  solicitante_id     :integer
 #  solicitado_id      :integer
 #  produto_id         :bigint
-#  aceite_solicitante :boolean
-#  aceite_solicitado  :boolean
+#  aceite_solicitante :boolean          default(FALSE)
+#  aceite_solicitado  :boolean          default(FALSE)
+#  troca_finalizada   :boolean          default(FALSE)
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #

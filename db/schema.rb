@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 2021_11_17_190718) do
     t.integer "solicitante_id"
     t.integer "solicitado_id"
     t.bigint "produto_id"
-    t.boolean "aceite_solicitante"
-    t.boolean "aceite_solicitado"
+    t.boolean "aceite_solicitante", default: false
+    t.boolean "aceite_solicitado", default: false
+    t.boolean "troca_finalizada", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["produto_id"], name: "index_trocas_on_produto_id"
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 2021_11_17_190718) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "cpf"
+    t.string "username"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   namespace 'api' do
   	namespace 'v1' do
+		# teste login
+		post "/users/login", to: "users#login"
+  		get "/users/auto_login", to: "users#auto_login"
   		#resources :users
 		
 		#CRUD base Usuario
@@ -38,6 +41,9 @@ Rails.application.routes.draw do
 
 		#Metodos fora do CRUD trocas
 		get '/trocas/busca_usuarios_troca/:id', to: 'trocas#busca_usuarios_troca'
+		post '/trocas/aceitar_troca_solicitante', to: 'trocas#aceitar_troca_solicitante'
+		post '/trocas/aceitar_troca_solicitado', to: 'trocas#aceitar_troca_solicitado'
+		post '/trocas/fazer_a_sua_parte', to: 'trocas#fazer_a_sua_parte'
 
   	end
   end
