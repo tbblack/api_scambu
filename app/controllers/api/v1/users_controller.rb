@@ -2,7 +2,7 @@
 module Api
 	module V1
 		class UsersController < ApplicationController   
-			before_action :authorized, except: [:auto_login, :login]
+			before_action :authorized, except: [:auto_login, :login, :create]
 			# Listar todos os usuarios
 			# get '/users/index', to: 'users#index'
             def index
@@ -15,17 +15,6 @@ module Api
 			def show
 				user = User.find(params[:id])
 				render json: {status: 'SUCCESS', message:'usuario carregado', data:user},status: :ok
-			end
-
-			# Criar um novo usuario
-			# post '/users/create', to: 'users#create'
-			def create
-				user = User.new(user_params)
-				if user.save
-					render json: {status: 'SUCCESS', message:'usuario salvo', data:user},status: :ok
-				else
-					render json: {status: 'ERROR', message:'usuario não salvo', data:user.erros},status: :unprocessable_entity
-				end
 			end
 
 			# Excluir usuario
@@ -83,7 +72,7 @@ module Api
 				@user = User.create(user_params)
 				if @user.valid?
 				token = encode_token({user_id: @user.id})
-				render json: {user: @user, token: token}
+				render json: {status: 'SUCCESS', message:'trocas nao finalizadas', user: @user, token: token},status: :ok
 				else
 				render json: {error: "Invalid username or password"}
 				end
@@ -111,7 +100,7 @@ module Api
 			private
 
 			def user_params
-				params.permit(:username, :password)
+				params.permit(:name, :cpf, :username, :password)
 			end
 
 		end

@@ -6,31 +6,35 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-#50.times  do
-#	User.create({
-#		name: Faker::Name.first_name,
-#		cpf: Faker::Number.leading_zero_number(digits: 10)
-#	})
-#end
+50.times  do
+    name = Faker::Name.first_name
+	User.create({
+		name: name,
+		cpf: Faker::Number.leading_zero_number(digits: 10),
+        username: name,
+        password: name
+	})
+end
 
-#10.times do
-#	Produto.create({
-#		name: Faker::Book.title,
-#		descricao: Faker::Book.genre,
-#		quantidade: Faker::Number.between(from: 1, to: 10),
-#		user_id: Faker::Number.between(from: 1, to: 50)
-#	})
-#	Produto.create({
-#		name: Faker::Device.model_name,
-#		descricao: Faker::Device.manufacturer,
-#		quantidade: Faker::Number.between(from: 1, to: 3),
-#		user_id: Faker::Number.between(from: 1, to: 50)
-#	})
-#	Produto.create({
-#		name: Faker::Game.title,
-#		descricao: Faker::Game.genre,
-#		quantidade: 1,
-#		user_id: Faker::Number.between(from: 1, to: 50)
-#	})
-#end
-user = User.create(name: "thales", cpf: "31863853855",username: "thales", password: "thales")
+10.times do
+	Produto.create({
+		name: Faker::Book.title,
+		descricao: Faker::Book.genre,
+		quantidade: Faker::Number.between(from: 1, to: 10),
+		user_id: Faker::Number.between(from: 1, to: 50)
+	})
+	Produto.create({
+		name: Faker::Device.model_name,
+		descricao: Faker::Device.manufacturer,
+		quantidade: Faker::Number.between(from: 1, to: 3),
+		user_id: Faker::Number.between(from: 1, to: 50)
+	})
+	Produto.create({
+		name: Faker::Game.title,
+		descricao: Faker::Game.genre,
+		quantidade: 1,
+		user_id: Faker::Number.between(from: 1, to: 50)
+	})
+end
+
+#user = User.create(name: "thales", cpf: "31863853855",username: "thales", password: "thales")
